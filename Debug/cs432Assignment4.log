@@ -1,0 +1,26 @@
+﻿  main.cpp
+C:\Users\Cerat\source\repos\cs432Assignment4\src\cs432.h(76,48): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Users\Cerat\source\repos\cs432Assignment4\src\mat.h(397,19): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Cerat\source\repos\cs432Assignment4\src\mat.h(409,19): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Cerat\source\repos\cs432Assignment4\src\mat.h(421,19): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Cerat\source\repos\cs432Assignment4\src\mat.h(495,18): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Cerat\source\repos\cs432Assignment4\src\mat.h(496,18): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Cerat\source\repos\cs432Assignment4\src\mat.h(497,18): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Cerat\source\repos\cs432Assignment4\src\mat.h(518,24): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Cerat\source\repos\cs432Assignment4\src\mat.h(520,24): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Cerat\source\repos\cs432Assignment4\src\mat.h(523,30): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Cerat\source\repos\cs432Assignment4\src\mat.h(533,19): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Cerat\source\repos\cs432Assignment4\src\mat.h(540,30): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(145,20): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(146,20): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(147,20): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(260,21): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(264,21): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(272,49): warning C4305: 'argument': truncation from 'double' to 'const GLfloat'
+C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(276,50): warning C4305: 'argument': truncation from 'double' to 'const GLfloat'
+C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(304,50): warning C4305: 'argument': truncation from 'double' to 'const GLfloat'
+C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(308,49): warning C4305: 'argument': truncation from 'double' to 'const GLfloat'
+C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(312,49): warning C4305: 'argument': truncation from 'double' to 'const GLfloat'
+C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(316,50): warning C4305: 'argument': truncation from 'double' to 'const GLfloat'
+C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(492,45): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+  cs432Assignment4.vcxproj -> C:\Users\Cerat\source\repos\cs432Assignment4\Debug\cs432Assignment4.exe
