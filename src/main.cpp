@@ -10,6 +10,8 @@
 #include "vec.h"
 #include "mat.h"
 #include "picking.h"
+#include "matStack.h"
+#include <string>
 
 // tick: every 50 milliseconds
 #define TICK_INTERVAL 50
@@ -18,8 +20,8 @@
 typedef vec4  color4;
 typedef vec4  point4;
 
-// for now, we know that we only need 36 vertices for our cube
-const int NumVertices = 36; //(6 faces)(2 triangles/face)(3 vertices/triangle)
+// for now, we know that we only need 72 vertices for our cube
+const int NumVertices = 72; //(6 faces)(2 triangles/face)(3 vertices/triangle)(2 cubes)
 
 // the properties of our objects
 static point4 points[NumVertices];
@@ -63,17 +65,37 @@ static GLuint  ModelView, ModelViewStart, Projection;
 // The matrix that defines where the camera is. This starts out +3 in the
 // z-direction, but can change based on the user moving the camera with
 // keyboard input
-mat4 model_view_start = LookAt(0,0,3,0,0,0,0,1,0);
+mat4 model_view_start = LookAt(0,0,10,0,0,0,0,1,0);
+
+static MatrixStack mvstack;
 
 // Variables used to control the moving of the light
-static bool lightSpin; // whether the light is moving
+static bool lightSpin = false; // whether the light is moving
 static GLfloat lightAngle = 0.0; // the current lighting angle
+
+// Variables used to control the moving of the dice
+static float gravity = -.05;
+static float resistance = 2;
+static bool die1Moving = true;
+static float die1Position[] = { 0,2,0 };
+
+static mat4 rotmat = RotateX(0);
+static float die1Velocity[] = { 0,0,0};
+static float die1Rotation[] = { 0,0,0 };
+static float die1AngularVelocity[] = { 10,-0.25,0 };
+static int numBounces1 = 0;
+
+// Variables used to control the game
+static int player1Score = 0;
+static int player2Score = 0;
+static int playerNum;
+static int runningSum = 0;
 
 //----------------------------------------------------------------------------
 
 
 
-// variable used in generating the vetrices for our objects
+// variable used in generating the vertices for our objects
 static int Index = 0;
 
 // quad generates a square (of our cube) using two triangles
@@ -155,14 +177,24 @@ static void updateLightPosition() {
 static void
 display( void )
 {
+
+    
     // set all to background color
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
     // compute the initial model-view matrix based on camera position
-	mat4  model_view = ( model_view_start *
-						RotateX( Theta[0] ) *
-						RotateY( Theta[1] ) *
-						RotateZ( Theta[2] ) );
+    mat4  model_view = model_view_start;
+    
+
+    //mvstack.push(model_view);
+
+    // perform translations on the die
+    model_view *= Translate(die1Position[0], die1Position[1], die1Position[2]);
+    model_view *= RotateX(die1Rotation[0]);
+    model_view *= RotateY(die1Rotation[1]);
+    model_view *= RotateZ(die1Rotation[2]);
+    
+    
     
     // update the light position based on the light-rotation information
     updateLightPosition();
@@ -177,6 +209,7 @@ display( void )
     clearPickId(); // clear pick-id
     
     
+    //mvstack.pop();
     // swap buffers (so that just-drawn image is displayed) or perform picking,
     // depending on mode
     if (inPickingMode()) {
@@ -215,8 +248,51 @@ tick(int n)
     glutTimerFunc(n, tick, n); // schedule next tick
 
     // change the appropriate axis based on spin-speed
-    Theta[Axis] += spinSpeed;
+    //Theta[Axis] += spinSpeed;
     
+    float speedsquared = die1Velocity[0] * die1Velocity[0] + die1Velocity[1] *
+        die1Velocity[1] + die1Velocity[2] * die1Velocity[2];
+
+    std::cout << "X Position" << die1Position[0] << ", Y Position: " << die1Position[1] << std::endl;
+    // update the position of the die by the different velocities
+    if (die1Moving) {
+        die1Velocity[1] += gravity;
+        
+        //we hit the ground. lets bounce
+        if (die1Position[1] <=-1) {
+            if (speedsquared < 0.02 || numBounces1 > 8) {
+                die1Moving = false;
+            }
+            else
+            {
+                numBounces1++;
+                die1Velocity[1] *= -1;
+                die1Velocity[1] = die1Velocity[1] / (numBounces1);
+                die1Position[1] = -1 + die1Velocity[1];
+                die1Position[0] += die1Velocity[0] / (numBounces1);
+                die1Position[2] += die1Velocity[2] / (numBounces1);
+                // I'm thinking something like 60% of the rotation is converted to velocity in the direction of the y rotation
+                
+            }
+            
+        }
+        else {
+            die1Position[0] += die1Velocity[0] / (numBounces1 + 1);
+            die1Position[1] += die1Velocity[1] / (numBounces1 + 1);
+            die1Position[2] += die1Velocity[2] / (numBounces1 + 1);
+            die1Rotation[0] += die1AngularVelocity[0];
+            die1Rotation[1] += die1AngularVelocity[1];
+            die1Rotation[2] += die1AngularVelocity[2];
+            rotmat *= RotateX(die1AngularVelocity[0]);
+            rotmat *= RotateY(die1AngularVelocity[1]);
+            rotmat *= RotateZ(die1AngularVelocity[2]);
+            die1AngularVelocity[0] /= resistance;
+            die1AngularVelocity[1] /= resistance;
+            die1AngularVelocity[2] /= resistance;
+        }
+        
+    }
+
     // change the light angle
     if (lightSpin) {
         lightAngle += 5.0;
@@ -513,6 +589,18 @@ init()
     
     // set background color to be white
     glClearColor( 1.0, 1.0, 1.0, 1.0 );
+
+    // initialize game variables
+    playerNum = static_cast <int> (rand());
+    float r1 = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / .1));
+    float r2 = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / .1));
+    float r3 = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / .1));
+    die1Velocity[0] = r1;
+    die1Velocity[1] = r2;
+    die1Velocity[2] = r3;
+
+
+
 }
 
 //----------------------------------------------------------------------------
@@ -524,7 +612,7 @@ main( int argc, char **argv )
     glutInit( &argc, argv );
     glutInitDisplayMode( GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH );
     glutInitWindowSize( 512, 512 );
-    glutCreateWindow( "Color Cube" );
+    glutCreateWindow( "Pig" );
 	glewInit();
     init();
 	

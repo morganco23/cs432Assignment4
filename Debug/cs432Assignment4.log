@@ -11,16 +11,17 @@ C:\Users\Cerat\source\repos\cs432Assignment4\src\mat.h(520,24): warning C4244: '
 C:\Users\Cerat\source\repos\cs432Assignment4\src\mat.h(523,30): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
 C:\Users\Cerat\source\repos\cs432Assignment4\src\mat.h(533,19): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
 C:\Users\Cerat\source\repos\cs432Assignment4\src\mat.h(540,30): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(145,20): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(146,20): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(147,20): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(260,21): warning C4305: '+=': truncation from 'double' to 'float'
-C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(264,21): warning C4305: '-=': truncation from 'double' to 'float'
-C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(272,49): warning C4305: 'argument': truncation from 'double' to 'const GLfloat'
-C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(276,50): warning C4305: 'argument': truncation from 'double' to 'const GLfloat'
-C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(304,50): warning C4305: 'argument': truncation from 'double' to 'const GLfloat'
-C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(308,49): warning C4305: 'argument': truncation from 'double' to 'const GLfloat'
-C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(312,49): warning C4305: 'argument': truncation from 'double' to 'const GLfloat'
-C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(316,50): warning C4305: 'argument': truncation from 'double' to 'const GLfloat'
-C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(492,45): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(77,28): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(167,20): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(168,20): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(169,20): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(333,21): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(337,21): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(345,49): warning C4305: 'argument': truncation from 'double' to 'const GLfloat'
+C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(349,50): warning C4305: 'argument': truncation from 'double' to 'const GLfloat'
+C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(377,50): warning C4305: 'argument': truncation from 'double' to 'const GLfloat'
+C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(381,49): warning C4305: 'argument': truncation from 'double' to 'const GLfloat'
+C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(385,49): warning C4305: 'argument': truncation from 'double' to 'const GLfloat'
+C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(389,50): warning C4305: 'argument': truncation from 'double' to 'const GLfloat'
+C:\Users\Cerat\source\repos\cs432Assignment4\src\main.cpp(565,45): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
   cs432Assignment4.vcxproj -> C:\Users\Cerat\source\repos\cs432Assignment4\Debug\cs432Assignment4.exe
